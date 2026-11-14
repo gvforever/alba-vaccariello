@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alba Vaccariello</title>
+<meta name="description" content="Maison Alba Vaccariello — Haute couture, joaillerie, horlogerie, parfums, voyages et art de vivre. Uniquement sur rendez-vous.">
+<style>
+:root{--bg:#000;--fg:#fff;--mute:rgba(255,255,255,.55);--soft:rgba(255,255,255,.78);--line:rgba(255,255,255,.12);--card:#070707;--rail:92px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+svg{display:block}
+
+/* ===== MENU VERTICAL ===== */
+nav{position:fixed;top:0;left:0;bottom:0;width:var(--rail);border-right:1px solid var(--line);background:#000;z-index:50;display:flex;flex-direction:column;align-items:center;overflow-y:auto;scrollbar-width:none;padding:16px 0 26px}
+nav::-webkit-scrollbar{display:none}
+.brand{display:flex;justify-content:center;padding:6px 0 16px;margin-bottom:8px;border-bottom:1px solid var(--line);width:62%}
+.brand svg{width:46px;height:42px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linejoin:miter}
+.it{position:relative;display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;padding:10px 4px;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);transition:color .3s;text-align:center}
+.it svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
+.it:hover,.it.on{color:#fff}
+.it:hover svg{transform:scale(1.12)}
+.it.on::before{content:"";position:absolute;left:0;top:16%;bottom:16%;width:2px;background:#fff}
+.sep{width:40%;height:1px;background:var(--line);margin:8px 0;flex:none}
+.count{position:absolute;top:4px;right:20px;min-width:16px;height:16px;border-radius:8px;background:#fff;color:#000;font-size:9px;font-weight:600;letter-spacing:0;display:none;align-items:center;justify-content:center;padding:0 4px}
+.count.show{display:flex}
+
+main{margin-left:var(--rail);min-height:100vh}
+.page{padding:70px 6vw 90px;animation:in .7s ease}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ===== TYPO ===== */
+.eyebrow{font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(--mute);margin-bottom:18px}
+h1{font-weight:200;font-size:clamp(40px,9vw,120px);letter-spacing:.2em;text-transform:uppercase;line-height:1}
+h2{font-weight:200;font-size:clamp(28px,5.4vw,66px);letter-spacing:.16em;text-transform:uppercase;line-height:1.1}
+h3{font-weight:300;font-size:13px;letter-spacing:.2em;text-transform:uppercase;line-height:1.4}
+.lead{max-width:740px;font-size:15px;line-height:1.95;color:var(--soft);margin:26px 0 44px}
+.btn{display:inline-block;border:1px solid #fff;padding:15px 32px;font-size:10px;letter-spacing:.36em;text-transform:uppercase;transition:.35s;text-align:center}
+.btn:hover,.btn.full{background:#fff;color:#000}
+.btn.full:hover{background:transparent;color:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.chip{border:1px solid var(--line);padding:9px 16px;font-size:9.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);transition:.3s}
+.chip:hover,.chip.on{border-color:#fff;color:#fff}
+
+/* ===== ACCUEIL ===== */
+.hero{min-height:calc(100vh - 140px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.stage{perspective:900px;margin-bottom:46px}
+.logo3d{width:150px;height:136px;position:relative;transform-style:preserve-3d;animation:spin 9s linear infinite}
+.logo3d svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke-linejoin:miter}
+@keyframes spin{0%{transform:rotateY(0) rotateX(8deg)}100%{transform:rotateY(360deg) rotateX(8deg)}}
+.hero .sub2{font-size:clamp(14px,2.4vw,26px);letter-spacing:.9em;font-weight:200;margin:18px 0 0 .9em;text-transform:uppercase}
+.tag{font-size:11px;letter-spacing:.42em;color:var(--mute);text-transform:uppercase;margin-top:30px}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:44px}
+.duo{display:grid;grid-template-columns:1fr 1.2fr;gap:6vw;align-items:center;padding:90px 0;border-top:1px solid var(--line)}
+.portrait{aspect-ratio:3/4;border:1px solid var(--line);background:radial-gradient(90% 70% at 50% 30%,#1b1b1b,#030303);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.portrait svg{width:46%;stroke:#fff;fill:none;stroke-width:.9;opacity:.85}
+.portrait span{position:absolute;bottom:16px;font-size:9px;letter-spacing:.4em;color:var(--mute);text-transform:uppercase}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.tile{background:#000;padding:34px 26px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;transition:.4s}
+.tile svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round}
+.tile p{font-size:12px;color:var(--mute);line-height:1.7;margin-top:8px}
+.tile:hover{background:#0c0c0c}
+
+/* ===== GRILLE PRODUITS ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:34px 28px}
+.card{display:block;text-align:left;width:100%}
+.tilt{transform-style:preserve-3d;transition:transform .25s ease,box-shadow .4s;will-change:transform}
+.vis{position:relative;aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
+.vis .ic{width:34%;stroke:rgba(255,255,255,.85);fill:none;stroke-width:.7;stroke-linecap:round;stroke-linejoin:round;transform:translateZ(40px);transition:transform .6s}
+.vis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vis .mono{position:absolute;top:14px;left:14px;font-size:9px;letter-spacing:.4em;color:rgba(255,255,255,.6)}
+.vis .ph{position:absolute;bottom:14px;right:14px;font-size:8px;letter-spacing:.35em;color:rgba(255,255,255,.45);text-transform:uppercase}
+.vis .play{position:absolute;width:62px;height:62px;border:1px solid #fff;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.vis .play::after{content:"";border-left:14px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.card:hover .vis .ic{transform:translateZ(40px) scale(1.08)}
+.card .meta{padding:16px 2px 0}
+.card .kind{font-size:9px;letter-spacing:.35em;color:var(--mute);text-transform:uppercase;margin-bottom:8px}
+.card .desc{font-size:12.5px;color:var(--mute);line-height:1.7;margin-top:8px}
+.sw{display:flex;gap:7px;margin-top:14px;flex-wrap:wrap}
+.sw i{width:13px;height:13px;border-radius:50%;border:1px solid rgba(255,255,255,.35)}
+.price{font-size:10px;letter-spacing:.3em;text-transform:uppercase;margin-top:14px;color:var(--soft)}
+
+/* ===== MODALE ===== */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:100;display:none;align-items:center;justify-content:center;padding:4vw}
+.modal.on{display:flex;animation:in .45s ease}
+.box{width:min(1100px,100%);max-height:92vh;overflow:auto;background:#050505;border:1px solid var(--line);display:grid;grid-template-columns:1.1fr 1fr;position:relative}
+#mv{display:flex}#mv .vis{flex:1}
+.box .vis{aspect-ratio:auto;min-height:540px;border:0;border-right:1px solid var(--line);cursor:zoom-in}
+.box .vis .ic{transition:transform .7s ease}
+.box .vis.zoom{cursor:zoom-out}
+.box .vis.zoom .ic,.box .vis.zoom img{transform:scale(1.9)}
+.box .vis img{transition:transform .7s ease}
+.info{padding:48px 42px}
+.info h2{font-size:clamp(24px,3vw,38px);margin:6px 0 18px}
+.info .desc{font-size:14px;line-height:1.9;color:var(--soft)}
+.info ul{list-style:none;margin:24px 0;border-top:1px solid var(--line)}
+.info li{font-size:12px;color:var(--mute);padding:12px 0;border-bottom:1px solid var(--line);letter-spacing:.04em}
+.lbl{font-size:9.5px;letter-spacing:.35em;text-transform:uppercase;color:var(--mute);margin:24px 0 12px}
+.opts{display:flex;flex-wrap:wrap;gap:10px}
+.opt{display:flex;align-items:center;gap:9px;border:1px solid var(--line);padding:8px 13px 8px 9px;font-size:11px;letter-spacing:.08em;color:var(--soft);transition:.3s}
+.opt i{width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.4)}
+.opt.on,.opt:hover{border-color:#fff;color:#fff}
+.info .actions{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.x{position:absolute;top:14px;right:16px;width:40px;height:40px;font-size:24px;font-weight:200;z-index:3;background:rgba(0,0,0,.5)}
+.toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(30px);background:#fff;color:#000;padding:14px 26px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;opacity:0;transition:.4s;z-index:200;pointer-events:none;white-space:nowrap}
+.toast.on{opacity:1;transform:translateX(-50%)}
+
+/* ===== VOYAGES / CARNET / TEXTES ===== */
+.formulas{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:70px}
+.formula{background:#000;padding:26px 20px}
+.formula b{display:block;font-weight:300;font-size:12px;letter-spacing:.28em;text-transform:uppercase;margin-bottom:10px}
+.formula span{font-size:12px;color:var(--mute);line-height:1.7}
+.num{position:absolute;top:12px;right:14px;font-size:30px;font-weight:200;color:rgba(255,255,255,.5)}
+.block{margin-top:80px}
+.block > h3{margin-bottom:26px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.entry{display:grid;grid-template-columns:200px 1fr;gap:40px;padding:44px 0;border-bottom:1px solid var(--line)}
+.entry .sk{aspect-ratio:3/4;border:1px solid var(--line);background:#060606;display:flex;align-items:center;justify-content:center}
+.entry .sk svg{width:70%;stroke:#fff;fill:none;stroke-width:.8;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+.entry .date{font-size:10px;letter-spacing:.4em;color:var(--mute);text-transform:uppercase;margin-bottom:12px}
+.entry p{font-size:14px;line-height:1.95;color:var(--soft);margin-top:14px;max-width:640px;font-style:italic}
+.palettes{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:28px}
+.pal .bars{display:flex;height:120px;border:1px solid var(--line)}
+.pal .bars i{flex:1}
+.pal h3{margin-top:14px;font-size:11px}
+.pal p{font-size:12px;color:var(--mute);margin-top:6px;line-height:1.6}
+.prose{max-width:760px}
+.prose h3{margin:44px 0 14px}
+.prose p{font-size:14.5px;line-height:1.95;color:var(--soft);margin-bottom:14px}
+.values{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:30px;margin-top:60px}
+.values div{border-top:1px solid #fff;padding-top:18px}
+.values p{font-size:12.5px;color:var(--mute);line-height:1.7;margin-top:10px}
+
+/* ===== FORMULAIRE ===== */
+.form{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;max-width:900px}
+.form .full{grid-column:1/-1}
+.field label{display:block;font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+.field input,.field textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.3);color:#fff;font:inherit;font-size:15px;padding:10px 0;outline:none;transition:border-color .3s}
+.field input:focus,.field textarea:focus{border-color:#fff}
+.field textarea{min-height:110px;resize:vertical}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.ck{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--soft);cursor:pointer}
+.ck input{appearance:none;-webkit-appearance:none;width:15px;height:15px;border:1px solid rgba(255,255,255,.5);flex:none;cursor:pointer;display:grid;place-content:center}
+.ck input:checked{background:#fff}
+.recap{border:1px solid var(--line);padding:24px}
+.recap .row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}
+.recap .row:last-child{border-bottom:0}
+.recap .row small{display:block;color:var(--mute);font-size:11px;margin-top:4px;letter-spacing:.06em}
+.recap .rm{font-size:9px;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
+.recap .rm:hover{color:#fff}
+.notice{font-size:11.5px;line-height:1.8;color:var(--mute);border-left:1px solid #fff;padding-left:18px}
+.done{display:none;border:1px solid #fff;padding:40px;max-width:900px;margin-top:20px}
+.done.on{display:block;animation:in .6s}
+
+/* ===== FOOTER ===== */
+footer{margin-left:var(--rail);border-top:1px solid var(--line);padding:70px 6vw 30px}
+.fgrid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:40px}
+.flogo svg{width:54px;height:48px;stroke:#fff;fill:none;stroke-width:2.2}
+.flogo p{font-size:12px;color:var(--mute);line-height:1.8;margin-top:20px;max-width:260px}
+.fcol h4{font-weight:300;font-size:10px;letter-spacing:.38em;text-transform:uppercase;margin-bottom:18px}
+.fcol a{display:block;font-size:12.5px;color:var(--mute);padding:6px 0;transition:color .3s}
+.fcol a:hover{color:#fff}
+.fbot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:60px;padding-top:24px;border-top:1px solid var(--line);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute)}
+.fbig{font-weight:200;font-size:clamp(34px,10vw,150px);letter-spacing:.14em;text-transform:uppercase;line-height:1;margin-top:60px;color:rgba(255,255,255,.08);white-space:nowrap;overflow:hidden}
+
+/* ===== MOBILE ===== */
+@media (max-width:860px){
+ .duo{grid-template-columns:1fr}
+ .box{grid-template-columns:1fr}
+ .box .vis{min-height:380px;border-right:0;border-bottom:1px solid var(--line)}
+ .info{padding:32px 24px}
+ .fgrid{grid-template-columns:1fr 1fr}
+ .flogo{grid-column:1/-1}
+ .entry{grid-template-columns:1fr;gap:22px}
+ .entry .sk{max-width:220px}
+}
+@media (max-width:640px){
+ :root{--rail:64px}
+ .brand svg{width:34px;height:31px}
+ .it{font-size:6.5px;letter-spacing:.08em;padding:9px 2px;gap:5px}
+ .it svg{width:20px;height:20px}
+ .count{right:8px}
+ .page{padding:44px 18px 70px}
+ .grid{grid-template-columns:1fr 1fr;gap:22px 12px}
+ .card .desc,.card .price{display:none}
+ .card h3{font-size:10.5px;letter-spacing:.12em}
+ .card .kind{font-size:7.5px;letter-spacing:.2em}
+ .form{grid-template-columns:1fr}
+ .modal{padding:0}
+ .box{max-height:100vh;height:100%}
+ footer{padding:50px 18px 24px}
+ .lead{font-size:14px}
+ .tiles{grid-template-columns:1fr 1fr}
+ .tile{padding:22px 16px;min-height:150px}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav"></nav>
+<main id="app"></main>
+
+<footer>
+  <div class="fgrid">
+    <div class="flogo">
+      <svg viewBox="0 0 52 48"><path d="M3 44L14 4L25 44M27 4L38 44L49 4"/></svg>
+      <p>Maison de création française et italienne. Pièces uniques, réalisées à la main, exclusivement sur rendez-vous.</p>
+    </div>
+    <div class="fcol"><h4>La Maison</h4><a href="#maison">Notre histoire</a><a href="#ateliers">Les Ateliers</a><a href="#carnet">Le Carnet d’Alba</a><a href="#contact">Rendez-vous privé</a></div>
+    <div class="fcol"><h4>Collections</h4><a href="#couture">Haute Couture</a><a href="#joaillerie">Joaillerie</a><a href="#horlogerie">Horlogerie</a><a href="#parfums">Parfums</a><a href="#maroquinerie">Maroquinerie</a></div>
+    <div class="fcol"><h4>Univers</h4><a href="#sport">Haute Sport</a><a href="#denim">Bleu Royal</a><a href="#lingerie">Lingerie</a><a href="#sleep">Sleepwear</a><a href="#essentiel">L’Essentiel</a><a href="#pet">Pet</a><a href="#voyages">Voyages</a></div>
+    <div class="fcol"><h4>Informations</h4><a href="#legal">Mentions légales</a><a href="#legal">Conditions de consultation</a><a href="#legal">Confidentialité</a><a href="#contact">Nous contacter</a></div>
+  </div>
+  <div class="fbig">Alba Vaccariello</div>
+  <div class="fbot"><span>© <span id="yr"></span> Alba Vaccariello by Gaetano Vaccariello</span><span>Paris · Milano · Sur rendez-vous</span></div>
+</footer>
+
+<div class="modal" id="modal"><div class="box" id="box"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ PICTOS ============ */
+const IC={
+ maison:'<path d="M3 11l9-8 9 8v10H3zM10 21v-6h4v6"/>',
+ couture:'<path d="M8 3L3 7v14h18V7l-5-4M8 3l4 7 4-7M12 10v11"/>',
+ joaillerie:'<path d="M6 3h12l4 6-10 12L2 9zM2 9h20M8 3l4 18 4-18"/>',
+ horlogerie:'<circle cx="12" cy="12" r="6"/><path d="M12 9v3l2 1.5M9 6.5L10 2h4l1 4.5M9 17.5l1 4.5h4l1-4.5"/>',
+ parfums:'<rect x="6" y="9" width="12" height="12" rx="2"/><path d="M10 9V5h4v4M9 3h6"/>',
+ maroquinerie:'<rect x="3" y="8" width="18" height="13" rx="2"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/>',
+ sport:'<path d="M2 18h20v2H2zM2 18c0-5 2-9 5-10l3 3 4-2c3 1 7 5 8 9"/>',
+ denim:'<path d="M6 3h12l1 18h-5l-2-11-2 11H5zM6 6h12"/>',
+ lingerie:'<path d="M3 7c0 6 4 9 9 9s9-3 9-9M3 7c4 0 7 3 9 9M21 7c-4 0-7 3-9 9"/>',
+ sleep:'<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+ essentiel:'<path d="M8 3L3 7l2 4 3-1v11h8V10l3 1 2-4-5-4a4 4 0 0 1-8 0z"/>',
+ pet:'<circle cx="12" cy="15" r="4"/><circle cx="6" cy="9" r="2"/><circle cx="10" cy="5" r="2"/><circle cx="14" cy="5" r="2"/><circle cx="18" cy="9" r="2"/>',
+ ateliers:'<circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8 16L19 3M16 16L5 3"/>',
+ carnet:'<path d="M4 20l4-1 11-11-3-3L5 16zM14 6l3 3"/>',
+ voyages:'<path d="M2 12l20-8-7 17-3-7z"/><path d="M12 14l-3 3"/>',
+ contact:'<rect x="3" y="5" width="18" height="14"/><path d="M3 5l9 8 9-8"/>'
+};
+const AV='<path d="M3 44L14 4L25 44M27 4L38 44L49 4"/>';
+const svg=(k,c='')=>`<svg viewBox="0 0 24 24" class="${c}">${IC[k]}</svg>`;
+
+/* ============ COULEURS ============ */
+const C={"Noir":"#0b0b0b","Ivoire":"#e9e1d1","Blanc":"#f2f2f0","Or jaune":"#c9a24a","Or blanc":"#d9d9d4","Or rose":"#c99a86","Platine":"#c4c6c8","Bleu royal":"#1f3a8a","Marine":"#14213d","Bordeaux":"#5b1a24","Champagne":"#d6c39a","Émeraude":"#0f5a44","Saphir":"#1b2f6b","Rubis":"#8a1027","Indigo brut":"#22305c","Délavé":"#7090b8","Gris perle":"#b9b9b9","Anthracite":"#2a2a2a","Rose poudré":"#d9b2ad","Nude":"#c9a991","Cognac":"#8a4f24","Camel":"#b8865a","Sable":"#cdb994","Lavande":"#9c8fb8","Sauge":"#8a9a83","Nacre":"#e6e1e8","Onyx":"#111111","Ambre":"#b8761e","Rouge laque":"#9e1b1b","Vert anglais":"#1f3d2b","Ciel":"#8fb3d9","Argent":"#a8adb3","Cristal":"#cfe3ea"};
+const hex=n=>C[n]||"#444";
+
+/* ============ RUBRIQUES ============ */
+const CATS={
+couture:{nav:"Couture",t:"Haute Couture",e:"Femme · Homme · Pièces de gala",l:"Chaque création naît d’un dessin d’Alba et se réalise entièrement à la main. Fils d’or et d’argent, boucles en or 18 à 24 carats, soies et cachemires d’exception : ici, rien n’est en plastique, rien n’est en série.",tags:["Femme","Homme"],det:["Pièce unique réalisée sur mesure","Création : 8 à 16 semaines","Essayages privés à l’atelier ou à domicile","Broderies au fil d’or et d’argent véritables"],it:[
+["Le Couronnement","Homme","Veste impériale aux épaulettes sculptées, dentelle de Calais et broderies au fil d’or. Digne d’un sacre.","Noir,Ivoire,Bleu royal"],
+["L’Empereur","Homme","Tenue intégrale : costume, chemise de soie, cravate, chaussettes et boutons de manchette en or 18 carats.","Noir,Marine,Bordeaux"],
+["Le Sacre","Homme","Smoking à revers de satin brodé, plastron de dentelle et boutons en or blanc.","Noir,Ivoire,Vert anglais"],
+["Chemise Alba","Homme","Popeline de coton Sea Island, col et poignets brodés à la main.","Blanc,Ciel,Noir"],
+["Cravate Monogramme","Homme","Soie de Côme tissée jacquard, monogramme AV ton sur ton.","Bordeaux,Marine,Noir"],
+["Robe Étoile","Femme","Robe de gala aux manches triangulaires, constellation brodée au fil d’argent.","Noir,Saphir,Argent"],
+["Robe Aurore","Femme","Robe du soir fluide en soie, ceinture à boucle en or 24 carats.","Champagne,Ivoire,Rose poudré"],
+["Robe Minuit","Femme","Ligne épurée en crêpe de soie, dos nu, fermoir en or blanc.","Noir,Marine,Émeraude"],
+["Cape Impériale","Femme","Cape longue en velours de soie, doublure brodée d’or.","Bordeaux,Noir,Ivoire"],
+["Cachemire Alba","Femme","Pull en cachemire de Mongolie, finitions main, col bateau.","Camel,Ivoire,Gris perle"]]},
+joaillerie:{nav:"Joaillerie",t:"Joaillerie",e:"Or & diamants · Les grands classiques revisités",l:"Des pièces fines et lumineuses, jamais ostentatoires. Or 18 carats, diamants certifiés, sertissage à la main dans nos ateliers italiens et français.",tags:["Bagues","Boucles d’oreilles","Colliers","Bracelets"],det:["Or 18 carats","Diamants certifiés, taille brillant","Gravure personnalisée offerte","Certificat d’authenticité numéroté"],it:[
+["Solitaire Alba","Bagues","Diamant taille brillant sur monture six griffes d’une finesse extrême.","Or jaune,Or blanc,Or rose"],
+["Trilogie","Bagues","Trois diamants alignés, symbole du passé, du présent et de l’avenir.","Or blanc,Or jaune,Platine"],
+["Jonc Éternité","Bagues","Alliance entièrement pavée de diamants.","Or rose,Or blanc,Or jaune"],
+["Toi & Moi","Bagues","Deux pierres face à face : diamant et saphir.","Or jaune,Or blanc"],
+["Chevalière AV","Bagues","Chevalière fine gravée du monogramme de la Maison.","Or jaune,Or blanc,Or rose"],
+["Pavée Fine","Bagues","Anneau pavé d’une ligne de diamants, à porter seul ou en accumulation.","Or rose,Or blanc,Or jaune"],
+["Solitaire Ovale","Bagues","Diamant taille ovale sur corbeille ajourée.","Platine,Or jaune"],
+["Bague Rubis Alba","Bagues","Rubis taille coussin entouré d’un halo de diamants.","Or jaune,Or blanc"],
+["Puces Lumière","Boucles d’oreilles","Diamants sertis quatre griffes, l’essentiel absolu.","Or blanc,Or jaune,Or rose"],
+["Créoles Fines","Boucles d’oreilles","Créoles délicates soulignées d’une ligne de diamants.","Or jaune,Or blanc,Or rose"],
+["Pendants Goutte","Boucles d’oreilles","Une goutte de diamant suspendue à un fil d’or.","Or blanc,Or jaune"],
+["Grimpantes Étoile","Boucles d’oreilles","Ligne de diamants qui épouse l’oreille.","Or rose,Or blanc"],
+["Dormeuses Perle","Boucles d’oreilles","Perle des mers du Sud et pavage de diamants.","Or jaune,Or blanc"],
+["Pendentif Larme","Colliers","Chaîne fine et goutte de diamant.","Or blanc,Or jaune,Or rose"],
+["Rivière Alba","Colliers","Rivière de diamants à sertissage invisible.","Or blanc,Platine"],
+["Collier Tennis","Colliers","Ligne continue de diamants, souplesse parfaite.","Or blanc,Or jaune"],
+["Sautoir Perles","Colliers","Perles des mers du Sud, fermoir pavé de diamants.","Ivoire,Champagne"],
+["Médaille AV","Colliers","Médaille gravée au monogramme, diamant central.","Or jaune,Or rose"],
+["Bracelet Jonc AV","Bracelets","Jonc ouvert terminé par deux diamants.","Or jaune,Or blanc,Or rose"],
+["Bracelet Tennis","Bracelets","Ligne de diamants, fermoir de sécurité invisible.","Or blanc,Or jaune"]]},
+horlogerie:{nav:"Horlogerie",t:"Horlogerie",e:"Extra-plates · Or blanc & or jaune",l:"La légèreté avant tout : des boîtiers d’une finesse rare, quelques diamants et pierres de couleur posés avec retenue. Mouvements suisses, assemblage à la main dans le Jura.",tags:["Femme","Homme"],det:["Boîtier or 18 carats","Mouvement suisse extra-plat","Bracelet cuir d’alligator ou or","Garantie internationale 5 ans"],it:[
+["Montre Plume","Femme","Boîtier extra-plat, cadran nacre, index diamants.","Or jaune,Or blanc,Or rose"],
+["Montre Givre","Femme","Lunette sertie de petits saphirs aux couleurs pastel.","Or blanc,Or rose"],
+["Montre Aube","Femme","Cadran opalin, quelques rubis et émeraudes en index.","Or jaune,Or blanc"],
+["Montre Ruban","Femme","Mini-boîtier sur ruban de satin interchangeable.","Noir,Bordeaux,Rose poudré"],
+["Montre Minuit","Homme","Cadran onyx, boîtier de 5 mm, une seule pierre à midi.","Or blanc,Or jaune"],
+["Montre Sentinelle","Homme","Petite seconde, cadran guilloché à la main.","Or jaune,Or blanc,Or rose"]]},
+parfums:{nav:"Parfums",t:"Parfums",e:"Les fragrances d’Alba",l:"Composés à Grasse avec les plus rares matières premières : rose centifolia, iris pallida, santal de Mysore. Chaque flacon se personnalise d’une gravure.",tags:[],det:["Eau de parfum, 100 ml","Composé à Grasse","Flacon cristal, bouchon en or","Gravure du flacon sur demande"],it:[
+["Alba N°1","Floral","Rose centifolia, ambre et bois de santal.","Rose poudré,Champagne"],
+["Nuit d’Alba","Oriental","Iris, vanille noire et cuir doux.","Noir,Bordeaux"],
+["Fleur de Sel","Frais","Néroli, sel marin et musc blanc. Le souvenir de l’été.","Ciel,Blanc"],
+["Ambre Royal","Boisé","Ambre gris, oud et encens.","Ambre,Cognac"],
+["Brume de Soie","Musqué","Musc, fleur de coton et poire.","Nacre,Lavande"],
+["Bougie Maison","Intérieur","La signature olfactive de la Maison, cire végétale, verre noir.","Noir,Ivoire"]]},
+maroquinerie:{nav:"Maroquinerie",t:"Maroquinerie",e:"Cuirs d’exception · Artisans de Florence",l:"Cuirs pleine fleur et peaux précieuses, coutures sellier, fermoirs en or massif. Chaque sac est numéroté et signé de l’artisan qui l’a réalisé.",tags:["Sacs","Accessoires"],det:["Cuir pleine fleur ou peau précieuse","Coutures sellier à la main","Fermoir en or massif","Numéroté et signé"],it:[
+["Sac Alba","Sacs","Sac à main structuré, fermoir AV en or 18 carats.","Noir,Cognac,Ivoire"],
+["Pochette Minuit","Sacs","Pochette du soir, chaîne en or blanc.","Noir,Bordeaux,Argent"],
+["Cabas Riviera","Sacs","Grand cabas souple pour l’été.","Camel,Sable,Noir"],
+["Mini Bag AV","Sacs","Petit sac bandoulière, la pièce culte.","Rose poudré,Noir,Bleu royal"],
+["Ceinture Boucle d’Or","Accessoires","Boucle en or massif gravée.","Noir,Cognac"],
+["Malle de Voyage","Accessoires","Malle cabine, ferrures dorées, intérieur sur mesure.","Noir,Cognac,Marine"],
+["Porte-cartes","Accessoires","Cuir grainé, initiales dorées à chaud.","Noir,Bordeaux,Vert anglais"]]},
+sport:{nav:"Haute Sport",t:"Haute Sport",e:"Couture Active",l:"Le sport comme une seconde peau : cachemires techniques, soies respirantes et coupes de couture. Pour le tennis, le ski, le yoga ou le yacht, avec la même exigence que la haute couture.",tags:["Femme","Homme","Ski & Tennis"],det:["Matières techniques de luxe","Coupe ajustée sur mesure","Monogramme brodé au fil d’or","Réalisé en Italie"],it:[
+["Survêtement Monogramme","Femme","Cachemire technique, bandes brodées AV.","Noir,Ivoire,Bleu royal"],
+["Legging Seconde Peau","Femme","Maille compressive italienne, ceinture sculptante.","Noir,Sauge,Lavande"],
+["Brassière Sculpt","Femme","Maintien parfait, dos croisé, finitions soie.","Noir,Nude,Rose poudré"],
+["Hoodie Cachemire","Homme","Sweat à capuche en cachemire double fil.","Gris perle,Marine,Camel"],
+["Coupe-vent Soie","Homme","Soie technique déperlante, ultra-légère.","Noir,Vert anglais,Sable"],
+["Sneakers Alba","Femme","Cuir italien, œillets en or, semelle cousue main.","Blanc,Noir,Ivoire"],
+["Tenue Tennis Riviera","Ski & Tennis","Polo et jupe plissée en piqué de soie.","Blanc,Ivoire,Marine"],
+["Combinaison Alpina","Ski & Tennis","Combinaison de ski cintrée, fourrure amovible.","Noir,Blanc,Rouge laque"]]},
+denim:{nav:"Bleu Royal",t:"Bleu Royal",e:"Denim Couture",l:"Le jean, réinventé comme une pièce de couture. Toiles selvedge japonaises et italiennes, coupes prises à vos mesures, initiales brodées au fil d’or et rivets en or 18 carats. Chaque jean est unique, à votre nom.",tags:["Femme","Homme"],det:["Toile selvedge japonaise ou italienne","Coupe à vos mesures","Initiales brodées au fil d’or","Rivets et bouton en or 18 carats"],it:[
+["Le Royal Droit","Femme","Coupe droite taille haute, la silhouette signature.","Indigo brut,Délavé,Noir,Blanc"],
+["Le Flare Alba","Femme","Évasé fluide, allonge la jambe à l’infini.","Indigo brut,Délavé,Bleu royal"],
+["Le Slim Couture","Femme","Ajusté comme un gant, toile stretch de luxe.","Noir,Indigo brut,Délavé"],
+["Veste Brodée","Femme","Veste en jean brodée de motifs au fil d’or.","Indigo brut,Blanc,Noir"],
+["Le Selvedge","Homme","Coupe droite, toile brute japonaise qui se patine.","Indigo brut,Noir"],
+["Chemise Denim","Homme","Denim léger, boutons de nacre.","Délavé,Indigo brut,Blanc"],
+["Jupe Couture","Femme","Jupe crayon en denim, fente arrière.","Indigo brut,Noir,Bleu royal"]]},
+lingerie:{nav:"Lingerie",t:"Lingerie & Handmade Lace",e:"Dentelles faites main",l:"Dentelles de Calais et d’Alençon tissées et brodées à la main, soies de Lyon, ajustement parfait à vos mesures. Une lingerie qui se transmet.",tags:["Soutiens-gorge","Culottes","Bodys"],det:["Dentelle de Calais ou d’Alençon","Soie de Lyon","Ajustement sur mesure","Livrée dans un écrin"],it:[
+["Soutien-gorge Calais","Soutiens-gorge","Corbeilles en dentelle de Calais, armatures gainées de soie.","Noir,Ivoire,Rose poudré,Bordeaux"],
+["Balconnet Aurore","Soutiens-gorge","Décolleté arrondi, dentelle brodée main.","Nude,Noir,Champagne"],
+["Triangle Plume","Soutiens-gorge","Sans armatures, tulle de soie et dentelle.","Ivoire,Lavande,Noir"],
+["Culotte Chantilly","Culottes","Dentelle de Chantilly, ceinture en soie.","Noir,Ivoire,Rose poudré"],
+["String Plume","Culottes","Dentelle de Calais d’une légèreté absolue.","Nude,Noir,Bordeaux"],
+["Body Alençon","Bodys","Body intégral en dentelle d’Alençon faite main.","Noir,Ivoire,Émeraude"],
+["Porte-jarretelles Soie","Culottes","Satin de soie, attaches dorées.","Noir,Champagne"],
+["Ensemble Mariée","Bodys","Body, culotte et jarretière brodés de perles.","Ivoire,Blanc"]]},
+sleep:{nav:"Sleepwear",t:"Sleepwear",e:"Soies de nuit",l:"Des nuits en soie : pyjamas, nuisettes et kimonos coupés dans les plus belles soies de Côme, passepoils contrastés et monogrammes brodés main.",tags:["Femme","Homme"],det:["Soie de Côme 22 mommes","Monogramme brodé main","Passepoils contrastés","Lavable délicatement"],it:[
+["Pyjama Soie Alba","Femme","Chemise et pantalon fluides, passepoils contrastés.","Champagne,Noir,Bleu royal,Rose poudré"],
+["Nuisette Lune","Femme","Fines bretelles, bordure de dentelle.","Noir,Ivoire,Bordeaux"],
+["Kimono Brodé","Femme","Kimono long, grues brodées au fil d’or.","Noir,Émeraude,Ivoire"],
+["Pyjama Monogramme","Homme","Soie lourde, monogramme AV sur la poche.","Marine,Bordeaux,Noir"],
+["Peignoir Cachemire","Homme","Robe de chambre en cachemire, ceinture à pompons.","Camel,Gris perle,Marine"],
+["Masque de Nuit","Femme","Soie et dentelle, élastique gainé.","Noir,Rose poudré,Champagne"]]},
+essentiel:{nav:"Essentiel",t:"L’Essentiel",e:"Underwear raffiné",l:"Ce qui se porte au plus près de la peau mérite le plus grand soin : coton Sea Island, soie et cachemire, coutures plates invisibles.",tags:["Femme","Homme"],det:["Coton Sea Island, soie ou cachemire","Coutures plates invisibles","Coffret de trois sur demande","Monogramme brodé"],it:[
+["Brassière Coton","Femme","Coton Sea Island, maintien doux.","Blanc,Noir,Nude"],
+["Culotte Soie","Femme","Soie lavable, taille haute.","Ivoire,Noir,Rose poudré"],
+["Débardeur Cashmere-Silk","Femme","Mélange cachemire et soie, fin comme un voile.","Ivoire,Noir,Gris perle"],
+["Boxer Sea Island","Homme","Coton Sea Island, ceinture monogrammée.","Blanc,Noir,Marine"],
+["Caleçon Soie","Homme","Soie de Côme, boutons de nacre.","Marine,Bordeaux,Blanc"],
+["Chaussettes Fil d’Écosse","Homme","Fil d’Écosse mercerisé, remaillées main.","Noir,Marine,Bordeaux"],
+["Collants Voile","Femme","Voile de soie, couture arrière.","Noir,Nude"]]},
+pet:{nav:"Pet",t:"Pet · Leash",e:"Chiens & chats d’exception",l:"Laisses et colliers réalisés par des artisans italiens et français : cuirs pleine fleur, diamants, et technologie embarquée. La laisse se rallonge seule, le collier intègre une balise GPS.",tags:["Chien","Chat"],det:["Cuir pleine fleur, coutures sellier","Diamants et or 18 carats","Laisse à enrouleur intégré","Collier avec balise GPS"],it:[
+["Infinity Leash","Chien","Laisse auto-rallongeable, poignée sertie de diamants.","Noir,Cognac,Bleu royal"],
+["Sovereign Leash","Chien","Cuir d’exception et mousqueton en or massif.","Bordeaux,Noir,Camel"],
+["Collier Sentinelle","Chien","Collier détachable avec balise GPS intégrée.","Noir,Cognac,Rouge laque"],
+["Médaille Gravée","Chien","Médaille en or, nom de votre compagnon gravé.","Or jaune,Or blanc,Or rose"],
+["Harnais Couture","Chien","Harnais cuir doublé d’agneau.","Camel,Noir"],
+["Panier Couture","Chien","Lit capitonné en velours de soie.","Ivoire,Vert anglais,Bordeaux"],
+["Kitty Leash","Chat","Laisse fine pour chat, mousqueton or.","Rose poudré,Noir,Lavande"],
+["Harnais Velours","Chat","Harnais en velours de soie, ultra-léger.","Bordeaux,Noir,Saphir"],
+["Collier Grelot d’Or","Chat","Collier de sécurité, grelot en or massif, GPS.","Rouge laque,Noir,Ivoire"],
+["Médaille Étoile","Chat","Petite étoile en or sertie d’un diamant.","Or jaune,Or blanc"],
+["Gamelle Cristal","Chat","Cristal taillé sur socle doré.","Cristal,Noir"]]}
+};
+
+/* ============ ATELIERS ============ */
+const ATELIERS=[
+["Atelier Couture","Paris","Vidéo","La coupe, le moulage sur mannequin et les essayages : là où chaque silhouette prend forme.","Noir"],
+["Dentelle faite main","Calais","Photo","Les dentellières tissent sur métiers Leavers, puis rebrodent chaque motif à l’aiguille.","Ivoire"],
+["Joaillerie","Valenza","Vidéo","Fonte de l’or, sertissage à la loupe, polissage : des centaines d’heures pour une rivière.","Or jaune"],
+["Maroquinerie","Florence","Photo","Coupe des peaux, coutures sellier et teinture des tranches à la main.","Cognac"],
+["Horlogerie","Jura suisse","Vidéo","Assemblage des mouvements extra-plats et guillochage des cadrans.","Argent"],
+["Parfumerie","Grasse","Photo","Récolte de la rose de mai à l’aube et composition des fragrances.","Rose poudré"],
+["Soierie","Côme","Vidéo","Tissage des soies jacquard et impression des carrés.","Bleu royal"],
+["Broderie d’or","Paris","Photo","Fils d’or et d’argent, perles et cannetilles posés point par point.","Champagne"],
+["Denim","Okayama","Vidéo","Teinture à l’indigo naturel et tissage selvedge sur métiers anciens.","Indigo brut"]];
+
+/* ============ CARNET ============ */
+const SK=[
+'<circle cx="50" cy="16" r="8"/><path d="M50 24v8M38 34c6-4 18-4 24 0l-4 26 20 70H22l20-70z M30 60l-14 30M70 60l14 30"/>',
+'<circle cx="50" cy="16" r="8"/><path d="M50 24v8M30 36l20 6 20-6 4 40H26zM26 76h48M38 76l-4 54M62 76l4 54M30 36l-8 50M70 36l8 50"/>',
+'<path d="M20 70c0-30 60-30 60 0M30 70h40l-6 50H36zM50 30l6-14M50 30l-6-14"/><circle cx="50" cy="44" r="6"/>',
+'<path d="M50 10l30 40-30 70-30-70zM20 50h60M35 50l15 70 15-70"/>',
+'<circle cx="50" cy="16" r="8"/><path d="M50 24v6M36 32h28l6 30-6 6v62h-8l-6-50-6 50h-8V68l-6-6z"/>',
+'<path d="M30 20h40v20H30zM40 40v8h20v-8M28 48h44v74H28zM28 70h44"/>'];
+const CARNET=[
+["12 novembre","Une robe pour la nuit","Je voulais une robe qui ressemble au ciel de Pantelleria quand il fait nuit noire. Des milliers de petites étoiles brodées au fil d’argent, et des manches en triangle comme des ailes."],
+["3 novembre","Le costume de papa","Papa dit qu’un costume doit être digne d’un couronnement. Alors j’ai dessiné des épaulettes très hautes, de la dentelle sur le col et des boutons en or. Il va adorer."],
+["21 octobre","Pour les chiens et les chats","Un collier qui ne se perd jamais : il y a un GPS caché dedans. Et une médaille en forme d’étoile pour les chats, parce qu’ils sont les stars de la maison."],
+["9 octobre","La bague de mes 13 ans","Un seul diamant, très fin, presque invisible de loin. Le vrai luxe, c’est quand on ne crie pas."],
+["28 septembre","Sport, mais chic","Pourquoi le sport devrait être moche ? Un legging noir, une brassière couleur sauge, et un hoodie en cachemire. Pour le tennis, une jupe plissée blanche."],
+["15 septembre","Le parfum","Je voudrais qu’il sente la rose, la mer et la vanille. Comme les vacances d’été quand on rentre de la plage."]];
+const PALETTES=[
+["Nuit d’Été","L’Italie après le coucher du soleil.","Noir,Marine,Or jaune,Champagne"],
+["Jardin de Roses","Grasse au mois de mai.","Rose poudré,Ivoire,Sauge,Or rose"],
+["Bleu Royal","Le denim, l’océan, les saphirs.","Indigo brut,Bleu royal,Ciel,Blanc"],
+["Impérial","Velours, bordeaux et or.","Bordeaux,Noir,Or jaune,Ivoire"]];
+
+/* ============ VOYAGES ============ */
+const FORMULES=[
+["Week-end","2 à 3 nuits. Jet privé, suite, chauffeur et table réservée."],
+["Semaine","7 nuits. Itinéraire composé sur mesure, guide privé."],
+["Quinzaine","14 nuits. Deux à trois adresses d’exception combinées."],
+["Un mois","30 nuits. Un voyage lent, entre villas privées et palaces."],
+["Trois mois","Une saison entière autour du monde, majordome dédié."],
+["Une année","Le tour du monde absolu : les 30 destinations en douze mois."]];
+const DEST=[
+["Bora Bora","Polynésie française","Îles","Four Seasons Resort Bora Bora","Mai à octobre","Ciel"],
+["Maldives","Océan Indien","Îles","Cheval Blanc Randheli","Novembre à avril","Ciel"],
+["Seychelles","Océan Indien","Îles","North Island","Avril à mai, octobre à novembre","Émeraude"],
+["Île Maurice","Océan Indien","Îles","One&Only Le Saint Géran","Mai à décembre","Ciel"],
+["Fidji","Pacifique Sud","Îles","Laucala Island","Mai à octobre","Émeraude"],
+["Saint-Barthélemy","Caraïbes","Îles","Le Toiny","Décembre à avril","Ciel"],
+["Turks & Caicos","Caraïbes","Îles","Amanyara","Décembre à avril","Ciel"],
+["Santorin","Grèce","Europe","Canaves Oia","Mai à octobre","Blanc"],
+["Mykonos","Grèce","Europe","Santa Marina","Juin à septembre","Blanc"],
+["Côte Amalfitaine","Italie","Europe","Le Sirenuse, Positano","Mai à octobre","Ambre"],
+["Capri","Italie","Europe","Hotel Caesar Augustus","Mai à septembre","Bleu royal"],
+["Lac de Côme","Italie","Europe","Villa d’Este","Avril à octobre","Vert anglais"],
+["Venise","Italie","Europe","Aman Venice","Avril à juin, septembre","Saphir"],
+["Saint-Tropez","France","Europe","Cheval Blanc St-Tropez","Juin à septembre","Ciel"],
+["Cap-Ferrat","Côte d’Azur","Europe","Grand-Hôtel du Cap-Ferrat","Mai à octobre","Ciel"],
+["Paris","France","Europe","Ritz Paris","Toute l’année","Champagne"],
+["Courchevel","Alpes françaises","Grand froid","L’Apogée Courchevel","Décembre à avril","Blanc"],
+["Laponie","Finlande","Grand froid","Octola Private Wilderness","Décembre à mars","Cristal"],
+["Islande","Atlantique Nord","Grand froid","Eleven Deplar Farm","Juin à août, février à mars","Gris perle"],
+["Marrakech","Maroc","Afrique","La Mamounia","Octobre à avril","Rouge laque"],
+["Serengeti","Tanzanie","Afrique","Four Seasons Safari Lodge","Juin à octobre","Sable"],
+["Sossusvlei","Namibie","Afrique","&Beyond Sossusvlei Desert Lodge","Mai à octobre","Ambre"],
+["Dubaï","Émirats arabes unis","Asie","Burj Al Arab","Novembre à mars","Or jaune"],
+["Kyoto","Japon","Asie","Aman Kyoto","Mars à mai, octobre à novembre","Rose poudré"],
+["Bali","Indonésie","Asie","Amandari","Avril à octobre","Sauge"],
+["Phuket","Thaïlande","Asie","Amanpuri","Novembre à avril","Émeraude"],
+["Udaipur","Inde","Asie","Taj Lake Palace","Octobre à mars","Ivoire"],
+["Bhoutan","Himalaya","Asie","Amankora","Mars à mai, septembre à novembre","Bordeaux"],
+["New York","États-Unis","Amériques","The Carlyle","Avril à juin, septembre à décembre","Anthracite"],
+["Patagonie","Chili","Amériques","Awasi Patagonia","Novembre à mars","Gris perle"]];
+const CROISIERES=[
+["Antarctique","Brise-glace de luxe, expédition polaire privée","Cristal"],
+["Méditerranée","Yacht privé avec équipage, de Monaco à Capri","Ciel"],
+["Îles grecques","Goélette à voiles, cabines suites","Blanc"],
+["Polynésie","Croisière entre Tahiti, Bora Bora et les Tuamotu","Émeraude"],
+["Fjords de Norvège","Navire d’exploration, aurores boréales","Marine"],
+["Le Nil","Dahabieh privée entre Louxor et Assouan","Sable"]];
+
+/* ============ ÉTAT ============ */
+let SEL=[];
+try{SEL=JSON.parse(localStorage.getItem("av_sel")||"[]")}catch(e){SEL=[]}
+const save=()=>{try{localStorage.setItem("av_sel",JSON.stringify(SEL))}catch(e){};updCount()};
+const $=s=>document.querySelector(s);
+const app=$("#app");
+
+/* ============ MENU ============ */
+const MENU=[["maison","Maison"],"|",["couture","Couture"],["joaillerie","Joaillerie"],["horlogerie","Horlogerie"],["parfums","Parfums"],["maroquinerie","Maroquinerie"],"|",["sport","Haute Sport"],["denim","Bleu Royal"],["lingerie","Lingerie"],["sleep","Sleepwear"],["essentiel","Essentiel"],["pet","Pet"],"|",["ateliers","Ateliers"],["carnet","Carnet"],["voyages","Voyages"],"|",["contact","Contact"]];
+$("#nav").innerHTML=`<a class="brand" href="#accueil" aria-label="Accueil"><svg viewBox="0 0 52 48">${AV}</svg></a>`+
+ MENU.map(m=>m==="|"?'<div class="sep"></div>':`<a class="it" href="#${m[0]}" data-r="${m[0]}">${svg(m[0])}<span>${m[1]}</span>${m[0]==="contact"?'<b class="count" id="count"></b>':""}</a>`).join("");
+function updCount(){const c=$("#count");if(!c)return;c.textContent=SEL.length;c.classList.toggle("show",SEL.length>0)}
+
+/* ============ VISUELS ============ */
+function vis(color,icon,extra=""){
+ const h=hex(color);
+ return `<div class="vis" style="background:radial-gradient(110% 80% at 30% 18%,${h}66,transparent 62%),radial-gradient(90% 70% at 80% 100%,${h}33,transparent 60%),linear-gradient(160deg,#121212,#030303)">
+ <span class="mono">AV</span>${extra}${icon?svg(icon,"ic"):""}<span class="ph">Photo à venir</span></div>`;
+}
+const swatches=list=>`<div class="sw">${list.map(c=>`<i title="${c}" style="background:${hex(c)}"></i>`).join("")}</div>`;
+const head=(e,t,l)=>`<p class="eyebrow">${e}</p><h2>${t}</h2>${l?`<p class="lead">${l}</p>`:""}`;
+
+/* ============ PAGES ============ */
+function pAccueil(){
+ const keys=Object.keys(CATS).concat(["ateliers","carnet","voyages"]);
+ const names={ateliers:["Les Ateliers","Les mains qui créent la Maison."],carnet:["Le Carnet d’Alba","Croquis, inspirations, journal."],voyages:["Voyages","Les 30 destinations d’une vie."]};
+ return `<section class="page">
+ <div class="hero">
+  <div class="stage"><div class="logo3d">
+   ${[...Array(7)].map((_,i)=>`<svg viewBox="0 0 52 48" style="transform:translateZ(${(i-3)*2.2}px);stroke:rgba(255,255,255,${i===3?1:.18});stroke-width:${i===3?2.2:1.6}">${AV}</svg>`).join("")}
+  </div></div>
+  <h1>Alba</h1><div class="sub2">Vaccariello</div>
+  <p class="tag">Haute couture · Joaillerie · Art de vivre</p>
+  <div class="ctas"><a class="btn full" href="#couture">Découvrir les collections</a><a class="btn" href="#contact">Prendre rendez-vous</a></div>
+ </div>
+ <div class="duo">
+  <div class="portrait"><svg viewBox="0 0 100 140"><circle cx="50" cy="20" r="11"/><path d="M50 31v8M34 44c8-5 24-5 32 0l-5 24 20 66H19l20-66z"/><path d="M39 68h22M44 44l6 10 6-10"/></svg><span>Portrait à venir</span></div>
+  <div>${head("La créatrice","Alba Vaccariello","À treize ans, Alba dessine une maison où le luxe se murmure. Des grands classiques revisités avec finesse, des matières nobles, des artisans d’exception, et une seule règle : chaque pièce est unique, pensée pour la personne qui la portera.")}
+   <a class="btn" href="#maison">L’histoire de la Maison</a></div>
+ </div>
+ <div class="block">${head("Les univers","La Maison","")}<br>
+ <div class="tiles">${keys.map(k=>{const c=CATS[k];const n=c?[c.t,c.e]:names[k];return `<a class="tile" href="#${k}">${svg(k)}<div><h3>${n[0]}</h3><p>${n[1]}</p></div></a>`}).join("")}</div></div>
+ </section>`;
+}
+function pCat(k){
+ const c=CATS[k];
+ return `<section class="page">${head(c.e,c.t,c.l)}
+ ${c.tags.length?`<div class="chips"><button class="chip on" data-f="*">Tout</button>${c.tags.map(t=>`<button class="chip" data-f="${t}">${t}</button>`).join("")}</div>`:""}
+ <div class="grid">${c.it.map((p,i)=>{const cols=p[3].split(",");return `<button class="card" data-k="${k}" data-i="${i}" data-tag="${p[1]}">
+  <div class="tilt">${vis(cols[0],k)}</div>
+  <div class="meta"><p class="kind">${p[1]}</p><h3>${p[0]}</h3><p class="desc">${p[2]}</p>${swatches(cols)}<p class="price">Sur consultation</p></div></button>`}).join("")}</div>
+ <div class="block" style="text-align:center"><p class="lead" style="margin:0 auto 30px">Toutes nos créations sont réalisées sur mesure. Ajoutez vos pièces à votre sélection, puis demandez votre rendez-vous privé.</p><a class="btn full" href="#contact">Demander un rendez-vous</a></div>
+ </section>`;
+}
+function pAteliers(){
+ return `<section class="page">${head("Savoir-faire","Les Ateliers","Derrière chaque pièce, des mains. Dentellières, brodeuses, joailliers, selliers, horlogers et parfumeurs : découvrez nos artisans au travail, en France, en Italie et ailleurs.")}
+ <div class="chips"><button class="chip on" data-f="*">Tout</button><button class="chip" data-f="Vidéo">Vidéos</button><button class="chip" data-f="Photo">Photos</button></div>
+ <div class="grid">${ATELIERS.map(a=>`<div class="card" data-tag="${a[2]}"><div class="tilt">${vis(a[4],a[2]==="Vidéo"?"":"ateliers",a[2]==="Vidéo"?'<span class="play"></span>':"")}</div>
+ <div class="meta"><p class="kind">${a[2]} · ${a[1]}</p><h3>${a[0]}</h3><p class="desc">${a[3]}</p></div></div>`).join("")}</div>
+ <div class="block" style="text-align:center"><p class="lead" style="margin:0 auto 30px">Les visites privées de nos ateliers sont accessibles sur invitation, dans le cadre d’une création sur mesure.</p><a class="btn full" href="#contact">Demander une visite</a></div></section>`;
+}
+function pCarnet(){
+ return `<section class="page">${head("Journal de la créatrice","Le Carnet d’Alba","Croquis, idées, couleurs et rêves : le carnet où naissent toutes les créations de la Maison.")}
+ ${CARNET.map((e,i)=>`<div class="entry"><div class="sk"><svg viewBox="0 0 100 140">${SK[i%SK.length]}</svg></div><div><p class="date">${e[0]} 2026</p><h3>${e[1]}</h3><p>« ${e[2]} »</p></div></div>`).join("")}
+ <div class="block"><h3>Inspirations · Palettes</h3><div class="palettes">${PALETTES.map(p=>`<div class="pal"><div class="bars">${p[2].split(",").map(c=>`<i style="background:${hex(c)}"></i>`).join("")}</div><h3>${p[0]}</h3><p>${p[1]}</p></div>`).join("")}</div></div></section>`;
+}
+function pVoyages(){
+ const regs=[...new Set(DEST.map(d=>d[2]))];
+ return `<section class="page">${head("Organisés par nos soins","Voyages","Les trente destinations à vivre une fois dans sa vie, uniquement le meilleur du meilleur : palaces légendaires, îles privées, safaris et croisières d’exception. Jet privé, transferts, majordome et expériences exclusives inclus.")}
+ <h3 style="margin-bottom:22px">Nos formules</h3>
+ <div class="formulas">${FORMULES.map(f=>`<div class="formula"><b>${f[0]}</b><span>${f[1]}</span></div>`).join("")}</div>
+ <h3 style="margin-bottom:22px">Les 30 destinations d’une vie</h3>
+ <div class="chips"><button class="chip on" data-f="*">Tout</button>${regs.map(r=>`<button class="chip" data-f="${r}">${r}</button>`).join("")}</div>
+ <div class="grid">${DEST.map((d,i)=>`<button class="card" data-d="${i}" data-tag="${d[2]}"><div class="tilt">${vis(d[5],"voyages",`<span class="num">${String(i+1).padStart(2,"0")}</span>`)}</div>
+ <div class="meta"><p class="kind">${d[1]}</p><h3>${d[0]}</h3><p class="desc">${d[3]} · ${d[4]}</p><p class="price">Sur consultation</p></div></button>`).join("")}</div>
+ <div class="block"><h3>Croisières</h3><div class="grid">${CROISIERES.map((c,i)=>`<button class="card" data-cr="${i}"><div class="tilt">${vis(c[2],"voyages")}</div><div class="meta"><p class="kind">Croisière</p><h3>${c[0]}</h3><p class="desc">${c[1]}</p></div></button>`).join("")}</div></div>
+ </section>`;
+}
+function pMaison(){
+ return `<section class="page"><div class="prose">${head("Notre histoire","La Maison","")}
+ <p>La Maison Alba Vaccariello est née d’un regard : celui d’une jeune créatrice de treize ans, élevée entre l’élégance italienne et l’exigence française, et convaincue que le vrai luxe se murmure.</p>
+ <p>Portée par la vision de Gaetano Vaccariello, la Maison réunit les meilleurs artisans d’Europe autour d’une seule idée : revisiter les grands classiques avec légèreté, sans jamais céder au clinquant.</p>
+ <h3>Le sur-mesure, uniquement</h3>
+ <p>Aucune pièce n’est vendue en ligne. Chaque création commence par une rencontre : une consultation privée, la prise de mesures, puis le dessin et le croquis de la pièce imaginée pour vous.</p>
+ <h3>Des matières sans compromis</h3>
+ <p>Fils d’or et d’argent véritables, or massif de 18 à 24 carats, diamants certifiés, soies de Côme, dentelles de Calais, cuirs de Florence. Pas de plastique, jamais.</p></div>
+ <div class="values"><div><h3>Unique</h3><p>Chaque pièce est créée pour une seule personne.</p></div><div><h3>Fait main</h3><p>Des centaines d’heures de travail artisanal.</p></div><div><h3>Discret</h3><p>Le luxe qui se murmure, jamais celui qui crie.</p></div><div><h3>Transmis</h3><p>Des créations pensées pour traverser les générations.</p></div></div>
+ <div class="block"><a class="btn full" href="#contact">Prendre rendez-vous</a></div></section>`;
+}
+function pContact(){
+ const opts=Object.values(CATS).map(c=>c.t).concat(["Voyages","Visite des ateliers"]);
+ const auto=new Set(SEL.map(s=>s.cat));
+ return `<section class="page">${head("Rendez-vous privé","Consultation de création","Chaque pièce de la Maison est réalisée sur mesure. Remplissez ce formulaire : notre équipe vous recontacte sous 48 heures pour organiser votre consultation privée.")}
+ <form class="form" id="form">
+  <div class="field"><label>Nom</label><input required name="nom"></div>
+  <div class="field"><label>Prénom</label><input required name="prenom"></div>
+  <div class="field"><label>E-mail</label><input required type="email" name="email"></div>
+  <div class="field"><label>Téléphone</label><input required type="tel" name="tel"></div>
+  <div class="field full"><label>Adresse</label><input required name="adresse" placeholder="Rue, code postal, ville, pays"></div>
+  <div class="field full"><label>Type d’achat souhaité</label><div class="checks">${opts.map(o=>`<label class="ck"><input type="checkbox" name="type" value="${o}" ${auto.has(o)?"checked":""}>${o}</label>`).join("")}</div></div>
+  <div class="field full"><label>Votre message</label><textarea name="message" placeholder="Décrivez votre projet, l’occasion, vos envies…"></textarea></div>
+  <div class="field full"><label>Ma sélection (${SEL.length})</label><div class="recap" id="recap">${recap()}</div></div>
+  <div class="full notice">La demande de rendez-vous correspond à une consultation de création d’un montant de <b style="color:#fff">1 000 €</b>, comprenant la prise des mesures ainsi que la réalisation du dessin et du croquis de la pièce souhaitée. Ces frais sont dus et non remboursables, quelle que soit la suite donnée au projet.</div>
+  <label class="ck full"><input type="checkbox" required>J’ai lu et j’accepte les conditions de la consultation de création.</label>
+  <div class="full"><button class="btn full" type="submit">Valider ma demande de rendez-vous</button></div>
+ </form>
+ <div class="done" id="done"><p class="eyebrow">Demande enregistrée</p><h3>Merci. La Maison Alba Vaccariello vous recontacte très prochainement.</h3><p class="lead" style="margin:16px 0 0">Vous recevrez un e-mail pour confirmer votre consultation et procéder au règlement.</p></div>
+ </section>`;
+}
+function recap(){
+ if(!SEL.length)return `<p style="font-size:13px;color:var(--mute)">Aucune pièce sélectionnée. <a href="#couture" style="color:#fff;border-bottom:1px solid #fff">Découvrir les collections</a></p>`;
+ return SEL.map((s,i)=>`<div class="row"><div>${s.n}<small>${s.cat} · ${s.c}</small></div><button type="button" class="rm" data-rm="${i}">Retirer</button></div>`).join("");
+}
+function pLegal(){
+ return `<section class="page"><div class="prose">${head("Informations","Mentions légales","")}
+ <h3>Éditeur du site</h3><p>Alba Vaccariello by Gaetano Vaccariello. Responsable de la publication : Gaetano Vaccariello. Les coordonnées complètes de l’éditeur (adresse, immatriculation, contact) seront précisées ici.</p>
+ <h3>Hébergement</h3><p>Ce site est hébergé par Vercel Inc., États-Unis.</p>
+ <h3>Conditions de consultation</h3><p>Aucune vente n’est réalisée directement en ligne. Toute création fait l’objet d’une consultation de création préalable d’un montant de 1 000 €, comprenant la prise de mesures, le dessin et le croquis de la pièce. Le devis de réalisation est remis à l’issue de la consultation.</p>
+ <h3>Confidentialité</h3><p>Les informations transmises via le formulaire sont utilisées uniquement pour traiter votre demande de rendez-vous et ne sont jamais cédées à des tiers. Vous pouvez demander leur suppression à tout moment.</p>
+ <h3>Propriété intellectuelle</h3><p>Le nom Alba Vaccariello, le monogramme AV, les créations et les contenus de ce site sont protégés. Toute reproduction est interdite sans autorisation.</p></div></section>`;
+}
+
+/* ============ ROUTEUR ============ */
+function route(){
+ const r=(location.hash||"#accueil").slice(1);
+ let html;
+ if(CATS[r])html=pCat(r);
+ else html=({maison:pMaison,ateliers:pAteliers,carnet:pCarnet,voyages:pVoyages,contact:pContact,legal:pLegal}[r]||pAccueil)();
+ app.innerHTML=html;
+ document.querySelectorAll(".it").forEach(a=>a.classList.toggle("on",a.dataset.r===r));
+ window.scrollTo(0,0);
+ const t=CATS[r]?CATS[r].t:({maison:"La Maison",ateliers:"Les Ateliers",carnet:"Le Carnet d’Alba",voyages:"Voyages",contact:"Rendez-vous",legal:"Mentions légales"}[r]);
+ document.title=t?`${t} — Alba Vaccariello`:"Alba Vaccariello";
+}
+window.addEventListener("hashchange",route);
+
+/* ============ MODALE ============ */
+const modal=$("#modal"),box=$("#box");
+function openModal(o){
+ let cur=o.opts[0];
+ box.innerHTML=`<button class="x" aria-label="Fermer">×</button>
+ <div id="mv">${vis(o.color(cur),o.icon,o.extra||"")}</div>
+ <div class="info"><p class="eyebrow">${o.kind}</p><h2>${o.name}</h2><p class="desc">${o.desc}</p>
+ <ul>${o.det.map(d=>`<li>${d}</li>`).join("")}</ul>
+ <p class="lbl">${o.optLabel} : <span id="cur" style="color:#fff">${cur}</span></p>
+ <div class="opts">${o.opts.map((c,i)=>`<button class="opt ${i?"":"on"}" data-o="${c}">${o.dot?`<i style="background:${hex(c)}"></i>`:""}${c}</button>`).join("")}</div>
+ <p class="lbl">Prix</p><p style="font-size:13px;letter-spacing:.2em;text-transform:uppercase">Sur consultation</p>
+ <div class="actions"><button class="btn full" id="add">Ajouter à ma sélection</button><a class="btn" href="#contact" id="go">Demander un rendez-vous</a></div></div>`;
+ box.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+  box.querySelectorAll(".opt").forEach(x=>x.classList.remove("on"));b.classList.add("on");cur=b.dataset.o;$("#cur").textContent=cur;
+  $("#mv").innerHTML=vis(o.color(cur),o.icon,o.extra||"");bindZoom();
+ });
+ $("#add").onclick=()=>{SEL.push({n:o.name,c:cur,cat:o.cat});save();toast(`${o.name} ajouté à votre sélection`)};
+ $("#go").onclick=()=>{if(!SEL.some(s=>s.n===o.name&&s.c===cur)){SEL.push({n:o.name,c:cur,cat:o.cat});save()}closeModal()};
+ box.querySelector(".x").onclick=closeModal;
+ bindZoom();
+ modal.classList.add("on");document.body.style.overflow="hidden";
+}
+function bindZoom(){
+ const v=box.querySelector(".vis");if(!v)return;
+ v.onclick=e=>{const r=v.getBoundingClientRect();const x=((e.clientX-r.left)/r.width*100)+"%",y=((e.clientY-r.top)/r.height*100)+"%";
+  v.querySelectorAll(".ic,img").forEach(el=>el.style.transformOrigin=`${x} ${y}`);v.classList.toggle("zoom")};
+}
+function closeModal(){modal.classList.remove("on");document.body.style.overflow=""}
+modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+
+/* ============ CLICS ============ */
+document.addEventListener("click",e=>{
+ const chip=e.target.closest(".chip");
+ if(chip){const f=chip.dataset.f;chip.parentNode.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c===chip));
+  const grid=chip.parentNode.nextElementSibling;grid.querySelectorAll(".card").forEach(c=>c.style.display=(f==="*"||c.dataset.tag===f)?"":"none");return}
+ const rm=e.target.closest("[data-rm]");
+ if(rm){SEL.splice(+rm.dataset.rm,1);save();$("#recap").innerHTML=recap();return}
+ const card=e.target.closest(".card");if(!card)return;
+ if(card.dataset.k){const k=card.dataset.k,c=CATS[k],p=c.it[+card.dataset.i];
+  openModal({name:p[0],kind:`${c.t} · ${p[1]}`,desc:p[2],det:c.det,opts:p[3].split(","),optLabel:"Couleur",dot:true,color:x=>x,icon:k,cat:c.t})}
+ else if(card.dataset.d){const d=DEST[+card.dataset.d];
+  openModal({name:d[0],kind:`Voyage · ${d[1]}`,desc:`Séjour d’exception à ${d[3]}. Meilleure saison : ${d[4]}. Jet privé, transferts, suite, majordome et expériences exclusives composées sur mesure.`,det:[`Hôtel : ${d[3]}`,`Saison idéale : ${d[4]}`,"Jet privé et chauffeur inclus","Conciergerie 24h/24"],opts:FORMULES.map(f=>f[0]),optLabel:"Formule",color:()=>d[5],icon:"voyages",cat:"Voyages"})}
+ else if(card.dataset.cr){const c=CROISIERES[+card.dataset.cr];
+  openModal({name:`Croisière ${c[0]}`,kind:"Voyage · Croisière",desc:`${c[1]}. Itinéraire privé, cabines suites et équipage dédié.`,det:["Suite avec terrasse privée","Chef à bord","Excursions privées","Transferts en jet privé"],opts:FORMULES.slice(1,4).map(f=>f[0]),optLabel:"Formule",color:()=>c[2],icon:"voyages",cat:"Voyages"})}
+});
+document.addEventListener("submit",e=>{
+ if(e.target.id!=="form")return;e.preventDefault();
+ /* Envoi réel (Resend / base de données) à brancher au back-end */
+ e.target.style.display="none";$("#done").classList.add("on");SEL=[];save();window.scrollTo({top:0,behavior:"smooth"});
+});
+
+/* ============ EFFET 3D ============ */
+if(window.matchMedia("(hover:hover)").matches){
+ document.addEventListener("mousemove",e=>{const t=e.target.closest(".card .tilt");
+  document.querySelectorAll(".tilt.act").forEach(x=>{if(x!==t){x.style.transform="";x.classList.remove("act")}});
+  if(!t)return;const r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+  t.classList.add("act");t.style.transform=`perspective(900px) rotateY(${x*14}deg) rotateX(${-y*14}deg) scale(1.02)`;t.style.boxShadow=`${-x*30}px ${-y*30+20}px 50px rgba(255,255,255,.06)`;});
+}
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),2200)}
+
+$("#yr").textContent=new Date().getFullYear();
+updCount();route();
+</script>
+</body>
+</html>
